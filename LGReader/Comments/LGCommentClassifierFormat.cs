@@ -22,8 +22,7 @@ namespace LGReader
         public LGCommentClassifierFormat()
         {
             this.DisplayName = "LGCommentClassifier"; // Human readable version of the name
-            this.BackgroundColor = Colors.BlueViolet;
-            this.TextDecorations = System.Windows.TextDecorations.Underline;
+            this.ForegroundColor = ThemeConstants.CommentForegroundColor;
         }
     }
 }

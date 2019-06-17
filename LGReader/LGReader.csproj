@@ -45,8 +45,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Comments\LGCommentClassifier.cs" />
+    <Compile Include="Comments\LGCommentClassifierClassificationDefinition.cs" />
+    <Compile Include="Comments\LGCommentClassifierFormat.cs" />
+    <Compile Include="Comments\LGCommentClassifierProvider.cs" />
+    <Compile Include="FileAndContentTypes.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="LGReaderPackage.cs" />
+    <Compile Include="ThemeConstants.cs" />
+    <Compile Include="Titles\LGTitleClassifier.cs" />
+    <Compile Include="Titles\LGTitleClassifierClassificationDefinition.cs" />
+    <Compile Include="Titles\LGTitleClassifierFormat.cs" />
+    <Compile Include="Titles\LGTitleClassifierProvider.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="source.extension.vsixmanifest">
@@ -54,7 +64,16 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.VisualStudio.SDK" Version="16.0.200" ExcludeAssets="runtime" />

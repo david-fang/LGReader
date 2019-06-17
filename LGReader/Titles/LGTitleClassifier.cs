@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using Microsoft.VisualStudio.Text;
 using Microsoft.VisualStudio.Text.Classification;
 
-namespace LGReader
+namespace LGReader.Titles
 {
     /// <summary>
-    /// Classifier that classifies all text as an instance of the "LGCommentClassifier" classification type.
+    /// Classifier that classifies all text as an instance of the "LGTitleClassifier" classification type.
     /// </summary>
-    internal class LGCommentClassifier : IClassifier
+    internal class LGTitleClassifier : IClassifier
     {
         /// <summary>
         /// Classification type.
@@ -16,12 +16,12 @@ namespace LGReader
         private readonly IClassificationType classificationType;
 
         /// <summary>
-        /// Initializes a new instance of the <see cref="LGCommentClassifier"/> class.
+        /// Initializes a new instance of the <see cref="LGTitleClassifier"/> class.
         /// </summary>
         /// <param name="registry">Classification registry.</param>
-        internal LGCommentClassifier(IClassificationTypeRegistryService registry)
+        internal LGTitleClassifier(IClassificationTypeRegistryService registry)
         {
-            this.classificationType = registry.GetClassificationType("LGCommentClassifier");
+            this.classificationType = registry.GetClassificationType("LGTitleClassifier");
         }
 
         #region IClassifier
@@ -51,10 +51,12 @@ namespace LGReader
         /// <returns>A list of ClassificationSpans that represent spans identified to be of this classification.</returns>
         public IList<ClassificationSpan> GetClassificationSpans(SnapshotSpan span)
         {
-            var result = new List<ClassificationSpan>()
+            var result = new List<ClassificationSpan>();
+
+            if (span.GetText().StartsWith("#"))
             {
-                new ClassificationSpan(new SnapshotSpan(span.Snapshot, new Span(span.Start, span.Length)), this.classificationType)
-            };
+                result.Add(new ClassificationSpan(new SnapshotSpan(span.Snapshot, new Span(span.Start, span.Length)), this.classificationType));
+            }
 
             return result;
         }
